@@ -1,0 +1,33 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+  EnabledByDefault: true
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Lint/ConstantResolution:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
+
+Style/ConstantVisibility:
+  Enabled: false
