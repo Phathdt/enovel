@@ -6,13 +6,7 @@ module Account
 
     attr_accessor :user, :email, :password
 
-    EMAIL_REGEX = /[^@]+@[^.]+\..+/.freeze
-
-    delegate :attributes=, to: :user, prefix: true
-
-    validates :email, presence: true, format: { with: EMAIL_REGEX, message: 'format is not valid' }
-    validates :password, presence: true, length: { in: 6..20 }
-    validate :email_is_exists?
+    validate :validate_user
 
     def initialize(params)
       super(params)
@@ -32,12 +26,18 @@ module Account
 
     private
 
-    def email_is_exists?
-      errors.add(:user, 'email exited') if Account::User.exists?(email: email)
+    def persist!
+      Account::User.create!(email: email, password: password)
     end
 
-    def persist!
-      @account = Account::User.create!(email: email, password: password)
+    def validate_user
+      promote_errors(user.errors) if user.invalid?
+    end
+
+    def promote_errors(errors)
+      errors.each do |error|
+        errors.add(error.attribute, error.message)
+      end
     end
   end
 end
