@@ -12,6 +12,13 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users
+  def index
+    users = Account::User.all
+
+    render(json: users)
+  end
+
   private
 
   def user_params

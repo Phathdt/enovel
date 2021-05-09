@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
     create_table(:users) do |t|
       t.text(:email, index: { unique: true })
       t.text(:password)
+      t.integer(:age, default: 0)
 
       t.timestamps
     end
