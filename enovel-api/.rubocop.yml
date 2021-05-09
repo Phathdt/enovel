@@ -3,7 +3,6 @@ require:
 
 AllCops:
   Exclude:
-    - 'db/**/*'
     - 'script/**/*'
     - 'bin/**/*'
   EnabledByDefault: true
