@@ -30,3 +30,6 @@ Style/DocumentationMethod:
 
 Style/ConstantVisibility:
   Enabled: false
+
+Bundler/GemComment:
+  Enabled: false

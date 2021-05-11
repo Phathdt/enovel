@@ -5,5 +5,7 @@ module Account
     self.table_name = 'users'
 
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+
+    scope :active, -> { where(active: true) }
   end
 end
